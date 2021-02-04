@@ -44,7 +44,10 @@ def home():
 
 @app.route("/read")
 def read():
-    return render_template(read.html)
+    subreddit = request.args.getlist('subreddits')
+
+    print(subreddit)
+    return render_template('read.html')
 
 
 app.run(host="127.0.0.1")
