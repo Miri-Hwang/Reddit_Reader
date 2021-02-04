@@ -1,5 +1,6 @@
 import requests
 from flask import Flask, render_template, request
+from bs4 import BeautifulSoup
 
 """
 When you try to scrape reddit make sure to send the 'headers' on your request.
@@ -35,6 +36,27 @@ subreddits = [
 
 
 app = Flask("DayEleven")
+db = []
+
+# 언어를 넣으면 db에 포스팅 내역 dict 추가
+
+
+def load_posts(language):
+    url = f"https://www.reddit.com/r/{language}/top/?t=month"
+    r = requests.get(url, headers=headers)
+    soup = BeautifulSoup(r.text, "html.parser")
+    posts = soup.find('div', {'class': 'rpBJOHq2PR60pnwJlUyP0'}).find_all(
+        'div', {'class': 'scrollerItem'})
+    for post in posts:
+        votes = post.find('div', {'class': '_1rZYMD_4xY3gRcSS3p8ODO'}).string
+
+        try:
+            votes = int(votes)
+            title = post.find('h3', {'class': '_eYtD2XCVieq6emjKBH3m'}).string
+            db.append({'title': title, 'votes': votes, 'language': language})
+        except:
+            pass
+    print(db)
 
 
 @app.route("/")
@@ -46,7 +68,6 @@ def home():
 def read():
     subreddit = request.args.getlist('subreddits')
 
-    print(subreddit)
     return render_template('read.html', subreddits=subreddit)
 
 
