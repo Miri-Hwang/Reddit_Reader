@@ -1,6 +1,7 @@
 import requests
 from flask import Flask, render_template, request
 from bs4 import BeautifulSoup
+from operator import itemgetter
 
 """
 When you try to scrape reddit make sure to send the 'headers' on your request.
@@ -36,27 +37,26 @@ subreddits = [
 
 
 app = Flask("DayEleven")
-db = []
+dbs = []
 
 # 언어를 넣으면 db에 포스팅 내역 dict 추가
 
 
-def load_posts(language):
-    url = f"https://www.reddit.com/r/{language}/top/?t=month"
+def load_posts(subject):
+    url = f"https://www.reddit.com/r/{subject}/top/?t=month"
     r = requests.get(url, headers=headers)
     soup = BeautifulSoup(r.text, "html.parser")
     posts = soup.find('div', {'class': 'rpBJOHq2PR60pnwJlUyP0'}).find_all(
         'div', {'class': 'scrollerItem'})
     for post in posts:
         votes = post.find('div', {'class': '_1rZYMD_4xY3gRcSS3p8ODO'}).string
-
+        # 광고는 제외
         try:
             votes = int(votes)
             title = post.find('h3', {'class': '_eYtD2XCVieq6emjKBH3m'}).string
-            db.append({'title': title, 'votes': votes, 'language': language})
+            dbs.append({'title': title, 'votes': votes, 'subject': subject})
         except:
             pass
-    print(db)
 
 
 @app.route("/")
@@ -66,9 +66,14 @@ def home():
 
 @app.route("/read")
 def read():
-    subreddit = request.args.getlist('subreddits')
+    subjects = request.args.getlist('subreddits')
+    # 주제 별 포스팅 모아서 리스트 생성 (dbs 에 저장)
+    for subject in subjects:
+        load_posts(subject)
 
-    return render_template('read.html', subreddits=subreddit)
+    # dbs 를 포스팅 추천 수 많은 순으로 정렬
+    sorted_dbs = sorted(dbs, key=itemgetter('votes'), reverse=True)
+    return render_template('read.html', subreddits=subjects, posts=sorted_dbs)
 
 
 app.run(host="127.0.0.1")
