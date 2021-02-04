@@ -42,4 +42,9 @@ def home():
     return render_template("home.html")
 
 
+@app.route("/read")
+def read():
+    return render_template(read.html)
+
+
 app.run(host="127.0.0.1")

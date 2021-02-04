@@ -14,17 +14,17 @@
 <div>
     <h3>Select the subreddits you're interested in:</h3>
 </div>
-<form>
+<form action="/read" method="get">
   <ul>
-    <li><input type="checkbox" name="chk_info" value="r/jsvascript">r/jsvascript</li>
-    <li><input type="checkbox" name="chk_info" value="r/reactjs">r/reactjs</li>
-    <li><input type="checkbox" name="chk_info" value="r/reactnative">r/reactnative</li>
-    <li><input type="checkbox" name="chk_info" value="r/programming">r/programming</li>
-    <li><input type="checkbox" name="chk_info" value="r/css">r/css</li>
-    <li><input type="checkbox" name="chk_info" value="r/golang">r/golang</li>
-    <li><input type="checkbox" name="chk_info" value="r/flutter">r/flutter</li>
-    <li><input type="checkbox" name="chk_info" value="r/rust">r/rust</li>
-    <li><input type="checkbox" name="chk_info" value="r/django">r/django</li>
+    <li><input type="checkbox" required name="javascript" value="r/javascript">r/javascript</li>
+    <li><input type="checkbox" required name="reactjs" value="r/reactjs">r/reactjs</li>
+    <li><input type="checkbox" required name="reactnative" value="r/reactnative">r/reactnative</li>
+    <li><input type="checkbox" required name="programming" value="r/programming">r/programming</li>
+    <li><input type="checkbox" required name="css" value="r/css">r/css</li>
+    <li><input type="checkbox" required name="golang" value="r/golang">r/golang</li>
+    <li><input type="checkbox" required name="flutter" value="r/flutter">r/flutter</li>
+    <li><input type="checkbox" required name="rust" value="r/rust">r/rust</li>
+    <li><input type="checkbox" required name="django" value="r/django">r/django</li>
     <input type="submit" value="Aggregate">
   </ul>
 </form>
