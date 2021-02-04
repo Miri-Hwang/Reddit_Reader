@@ -47,7 +47,7 @@ def read():
     subreddit = request.args.getlist('subreddits')
 
     print(subreddit)
-    return render_template('read.html')
+    return render_template('read.html', subreddits=subreddit)
 
 
 app.run(host="127.0.0.1")
