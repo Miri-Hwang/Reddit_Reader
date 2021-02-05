@@ -54,7 +54,10 @@ def load_posts(subject):
         try:
             votes = int(votes)
             title = post.find('h3', {'class': '_eYtD2XCVieq6emjKBH3m'}).string
-            dbs.append({'title': title, 'votes': votes, 'subject': subject})
+            url = post.find('a', {'class': 'SQnoC3ObvgnGjWt90zD9Z'})['href']
+            if url != None:
+                dbs.append({'title': title, 'votes': votes,
+                            'subject': subject, 'url': url})
         except:
             pass
 
