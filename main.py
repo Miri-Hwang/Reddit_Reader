@@ -69,6 +69,10 @@ def home():
 
 @app.route("/read")
 def read():
+    global dbs
+    if len(dbs) != 0:
+        dbs = []
+
     subjects = request.args.getlist('subreddits')
     # 주제 별 포스팅 모아서 리스트 생성 (dbs 에 저장)
     for subject in subjects:
