@@ -73,6 +73,7 @@ def read():
 
     # dbs 를 포스팅 추천 수 많은 순으로 정렬
     sorted_dbs = sorted(dbs, key=itemgetter('votes'), reverse=True)
+    print(sorted_dbs)
     return render_template('read.html', subreddits=subjects, posts=sorted_dbs)
 
 

@@ -14,6 +14,14 @@
       {% endfor %}
     </h3>
   </div>
+  <div>
+    <p>
+    {% for post in posts %}
+      {{post['title']}}
+      {{post['votes']}} upvotes · r/{{post['subject']}} 
+    {% endfor %}
+   </p>
+  </div>
 </body>
 
 </html>
