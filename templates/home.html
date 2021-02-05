@@ -1,33 +1,70 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <link href="https://andybrewer.github.io/mvp/mvp.css" rel="stylesheet"></link>
+    <style>
+      .submit{
+        background-color: cornflowerblue;
+        color: white;
+      }
 
-<head>
-  <link href="https://andybrewer.github.io/mvp/mvp.css" rel="stylesheet"></link>
-</head>
+      .head{
+        text-align: center;
 
-<body>
-<div>
-  <h1>Reddit Reader</h1>
-  <h3>A service to aggregate all your favorite subreddits</h3>
-</div>
+      }
+    </style>
+  </head>
 
-<div>
-    <h3>Select the subreddits you're interested in:</h3>
-</div>
-<form action="/read" method="get">
-  <ul>
-    <li><input type="checkbox" name="subreddits" value="javascript">r/javascript</li>
-    <li><input type="checkbox" name="subreddits" value="reactjs">r/reactjs</li>
-    <li><input type="checkbox" name="subreddits" value="reactnative">r/reactnative</li>
-    <li><input type="checkbox" name="subreddits" value="programming">r/programming</li>
-    <li><input type="checkbox" name="subreddits" value="css">r/css</li>
-    <li><input type="checkbox" name="subreddits" value="golang">r/golang</li>
-    <li><input type="checkbox" name="subreddits" value="flutter">r/flutter</li>
-    <li><input type="checkbox" name="subreddits" value="rust">r/rust</li>
-    <li><input type="checkbox" name="subreddits" value="django">r/django</li>
-    <input type="submit" value="Aggregate">
-  </ul>
-</form>
-</body>
+  <body>
+    <div class="head">
+      <p>
+      <h1>Reddit Reader</h1>
+      <h3>A service to aggregate all your favorite subreddits</h3>
+      </br></br>
+      </p>
+    </div>
 
+  
+    <form action="/read" method="get">
+      <h3>Select the subreddits you're interested in:</h3>
+      <ul>
+        <li>
+          <input
+            type="checkbox"
+            name="subreddits"
+            value="javascript"
+          />r/javascript
+        </li>
+        <li>
+          <input type="checkbox" name="subreddits" value="reactjs" />r/reactjs
+        </li>
+        <li>
+          <input
+            type="checkbox"
+            name="subreddits"
+            value="reactnative"
+          />r/reactnative
+        </li>
+        <li>
+          <input
+            type="checkbox"
+            name="subreddits"
+            value="programming"
+          />r/programming
+        </li>
+        <li><input type="checkbox" name="subreddits" value="css" />r/css</li>
+        <li>
+          <input type="checkbox" name="subreddits" value="golang" />r/golang
+        </li>
+        <li>
+          <input type="checkbox" name="subreddits" value="flutter" />r/flutter
+        </li>
+        <li><input type="checkbox" name="subreddits" value="rust" />r/rust</li>
+        <li>
+          <input type="checkbox" name="subreddits" value="django" />r/django
+        </li>
+      </ul>
+      <input class='submit' type="submit" value="Aggregate" />
+    </form>
+  </body>
 </html>
