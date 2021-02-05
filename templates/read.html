@@ -3,6 +3,23 @@
 
 <head>
   <link href="https://andybrewer.github.io/mvp/mvp.css" rel="stylesheet"></link>
+
+  <style>
+    .head{
+      text-align: center;
+    }
+    .head h1{
+      color:blueviolet;
+    }
+
+    .title {
+      color:blueviolet;
+    }
+
+    .post{
+      font-weight: bold;
+    }
+  </style>
 </head>
 
 <body>
@@ -14,11 +31,15 @@
       {% endfor %}
     </h3>
   </div>
-  <div>
+  <div class = "post">
     <p>
     {% for post in posts %}
+    <div class="title"> 
       {{post['title']}}
+    </div>
+
       {{post['votes']}} upvotes · r/{{post['subject']}} 
+    
     {% endfor %}
    </p>
   </div>
