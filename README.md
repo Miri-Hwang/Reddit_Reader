@@ -1,4 +1,4 @@
-# Reddit_Reader
+# Reddit Reader
 
 + 노마드 코더 과제 수행물
 + Reddit의 Sub-reddit Scraping : https://www.reddit.com/
